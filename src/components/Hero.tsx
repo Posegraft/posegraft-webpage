@@ -1,8 +1,9 @@
 import HeroCanvas from './HeroCanvas'
 import Reveal from './Reveal'
+import ComingSoonButton from './ComingSoonButton'
 
 const stats = [
-  { value: '~200/s', label: 'real-time IK solves per robot' },
+  { value: '~200/s', label: 'real-time motion solves per robot' },
   { value: '8+', label: 'industrial robots bundled' },
   { value: '10+', label: 'CAD formats imported' },
   { value: '100%', label: 'of features agent-callable' },
@@ -37,24 +38,22 @@ export default function Hero() {
         <Reveal delay={200}>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft md:text-xl">
             Design your scene. Build robotic logic. Let agents do the rest. PoseGraft pairs a
-            human-optimized 3D workcell studio with an agent-native backend — Enhanced MCP, gRPC,
-            and SDK access to every single feature.
+            human-optimized 3D workcell studio with an agent-native backend — every single
+            feature is something an AI agent can see and control.
           </p>
         </Reveal>
 
         <Reveal delay={300}>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href="#get-started"
-              className="rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-accent/25 transition-all hover:-translate-y-0.5 hover:bg-accent-deep hover:shadow-xl hover:shadow-accent/30"
-            >
+            <ComingSoonButton className="rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-accent/25 transition-all hover:-translate-y-0.5 hover:bg-accent-deep hover:shadow-xl hover:shadow-accent/30">
               Download for Linux
-            </a>
+            </ComingSoonButton>
+            {/* ponytail: no scheduling tool yet — mailto is the stand-in until one exists */}
             <a
-              href="#demos"
+              href="mailto:hello@posegraft.com?subject=Book%20a%20demo"
               className="rounded-full border border-line bg-white/80 px-8 py-3.5 text-base font-semibold text-ink backdrop-blur transition-all hover:-translate-y-0.5 hover:border-accent/40 hover:text-accent"
             >
-              Watch the demo
+              Book a demo
             </a>
           </div>
         </Reveal>

@@ -14,14 +14,14 @@ const steps = [
   {
     n: '03',
     title: 'Run & integrate',
-    body: 'Press Play and watch the simulated motion. Then drive the same cell from outside — MCP tools for agents, gRPC and SDK for everything else.',
+    body: 'Press Play and watch the simulated motion. Then drive the same cell from outside — MCP tools for agents, API and SDK for everything else.',
   },
 ]
 
 const archItems = [
-  { label: 'Desktop app', detail: 'Tauri · React · Three.js', tint: 'border-warm/30 bg-warm-soft text-warm' },
-  { label: 'Native sidecars', detail: 'TRAC-IK · SDK · block runner (C++)', tint: 'border-accent/30 bg-accent-soft text-accent' },
-  { label: 'Agent surface', detail: 'Enhanced MCP · gRPC · WebSocket SDK', tint: 'border-teal/30 bg-teal-soft text-teal' },
+  { label: 'Design in 3D', detail: 'build your workcell visually', tint: 'border-warm/30 bg-warm-soft text-warm' },
+  { label: 'Simulate instantly', detail: 'real-time, accurate robot motion', tint: 'border-accent/30 bg-accent-soft text-accent' },
+  { label: 'Hand it to agents', detail: 'every feature callable by AI', tint: 'border-teal/30 bg-teal-soft text-teal' },
 ]
 
 export default function HowItWorks() {
@@ -50,7 +50,7 @@ export default function HowItWorks() {
       <Reveal delay={200} className="mt-16">
         <div className="rounded-3xl border border-line bg-white p-6 shadow-sm md:p-8">
           <p className="text-center text-sm font-medium text-ink-faint">
-            One local-first stack, no ROS required
+            Runs entirely on your machine — no cloud, no complex setup
           </p>
           <div className="mt-5 flex flex-col items-stretch gap-3 md:flex-row md:items-center">
             {archItems.map((item, i) => (

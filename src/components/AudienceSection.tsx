@@ -1,24 +1,22 @@
-import { useState, type CSSProperties } from 'react'
 import Reveal from './Reveal'
-import HumanRobotHead, { type Side } from './HumanRobotHead'
 
 const humanPoints = [
-  'Sim Studio viewport — a clean 3D workcell inspired by Gazebo and Isaac Sim',
-  'Flow Builder — program robots by connecting visual blocks, then press Play',
-  'Drag the interactive marker and watch real-time IK follow your hand',
-  'Reach analysis, face mating, and measuring tools built into the scene',
+  'A clean 3D workcell where you build and test your robot cell before it exists',
+  'Program robots by connecting visual blocks, then press Play — no code needed',
+  'Drag a marker and the robot arm follows your hand in real time',
+  'Check reach, snap parts together, and measure — right inside the scene',
 ]
 
 const agentPoints = [
-  'Enhanced MCP server with very low-level access — agents can do anything a human can',
-  'gRPC RobotControlService: MoveToPose, ControlGripper, SavePose, GetTcp and more',
-  'WebSocket SDK for motion simulation, pose stores, and scene actions',
+  'Agents get the same low-level access a human has — they can do anything you can',
+  'Move the robot, drive grippers, save poses, and read the scene directly',
+  'Simulate motion and rehearse full tasks without touching real hardware',
   'Every block, pose, and scene option exposed as a callable tool',
 ]
 
 const iconStroke = { stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round', fill: 'none' } as const
 
-const capabilities = [
+export const capabilities = [
   {
     title: 'Enhanced MCP, all the way down',
     tint: 'bg-accent-soft text-accent',
@@ -89,79 +87,44 @@ function Check({ className }: { className: string }) {
   )
 }
 
-/**
- * One pointer = one card. When its side is hovered the cards "pop up" with a
- * staggered lift; when the other side is hovered they dim back. Below lg there
- * is no hover, so cards just sit in their resting state (ponytail: hover is a
- * desktop enhancement, tap still sets the side on touch via pointerdown).
- */
-function PointCard({
-  text,
-  mine,
-  side,
-  index,
-  accent,
-}: {
-  text: string
-  mine: Exclude<Side, null>
-  side: Side
-  index: number
-  accent: string
-}) {
-  const active = side === mine
-  const dim = side !== null && side !== mine
-  const style: CSSProperties = {
-    transitionDelay: `${index * 70}ms`,
-    transform: active ? 'translateY(-6px) scale(1.03)' : dim ? 'scale(0.97)' : undefined,
-    opacity: dim ? 0.4 : 1,
-  }
-  return (
-    <div
-      style={style}
-      className={`flex items-start gap-3 rounded-2xl border bg-white p-4 shadow-sm transition-all duration-500 ${
-        active ? 'border-accent/40 shadow-xl' : 'border-line'
-      }`}
-    >
-      <Check className={accent} />
-      <span className="text-sm leading-relaxed text-ink-soft">{text}</span>
-    </div>
-  )
-}
-
-function ColumnHeader({
-  side,
-  mine,
+function AudienceCard({
   tint,
   icon,
   title,
   blurb,
-  align,
+  points,
+  accent,
+  children,
 }: {
-  side: Side
-  mine: Exclude<Side, null>
   tint: string
   icon: React.ReactNode
   title: string
   blurb: string
-  align?: 'right'
+  points: string[]
+  accent: string
+  children?: React.ReactNode
 }) {
-  const dim = side !== null && side !== mine
   return (
-    <div
-      className={`transition-all duration-500 ${dim ? 'opacity-40' : 'opacity-100'} ${align === 'right' ? 'lg:text-right' : ''}`}
-    >
-      <div className={`flex items-center gap-3 ${align === 'right' ? 'lg:flex-row-reverse' : ''}`}>
+    <div className="flex flex-col gap-4 rounded-3xl border border-line bg-white p-6 shadow-sm md:p-8">
+      <div className="flex items-center gap-3">
         <span className={`flex h-11 w-11 items-center justify-center rounded-2xl ${tint}`}>{icon}</span>
         <h3 className="font-display text-2xl font-semibold text-ink">{title}</h3>
       </div>
-      <p className="mt-3 text-ink-soft">{blurb}</p>
+      <p className="text-ink-soft">{blurb}</p>
+      <ul className="flex flex-col gap-3">
+        {points.map((p) => (
+          <li key={p} className="flex items-start gap-3">
+            <Check className={accent} />
+            <span className="text-sm leading-relaxed text-ink-soft">{p}</span>
+          </li>
+        ))}
+      </ul>
+      {children}
     </div>
   )
 }
 
 export default function AudienceSection() {
-  const [side, setSide] = useState<Side>(null)
-
   return (
     <section id="agents" className="mx-auto max-w-7xl scroll-mt-20 px-5 py-24">
       <Reveal className="text-center">
@@ -176,64 +139,45 @@ export default function AudienceSection() {
       </Reveal>
 
       <Reveal delay={150} className="mt-14">
-        <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,3.2fr)_minmax(0,3.6fr)_minmax(0,3.2fr)]">
-          {/* human column */}
-          <div data-side="human" data-active={side === 'human'} className="order-2 flex flex-col gap-3 lg:order-1">
-            <ColumnHeader
-              side={side}
-              mine="human"
-              tint="bg-warm-soft text-warm"
-              title="For humans"
-              blurb="A friendly desktop studio where designing a workcell feels like sketching, not scripting."
-              icon={
-                <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
-                  <circle cx="12" cy="8" r="3.5" stroke="currentColor" strokeWidth="1.8" />
-                  <path d="M5 20c.8-3.5 3.6-5.5 7-5.5s6.2 2 7 5.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                </svg>
-              }
+        <div className="grid items-start gap-6 lg:grid-cols-2">
+          <AudienceCard
+            tint="bg-warm-soft text-warm"
+            title="For humans"
+            blurb="A friendly desktop studio where designing a workcell feels like sketching, not scripting."
+            points={humanPoints}
+            accent="text-warm"
+            icon={
+              <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
+                <circle cx="12" cy="8" r="3.5" stroke="currentColor" strokeWidth="1.8" />
+                <path d="M5 20c.8-3.5 3.6-5.5 7-5.5s6.2 2 7 5.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+              </svg>
+            }
+          >
+            <img
+              src="/studio.png"
+              alt="PoseGraft studio — 3D workcell viewport beside the visual Flow Builder"
+              loading="lazy"
+              className="mt-1 w-full rounded-2xl border border-line shadow-sm"
             />
-            {humanPoints.map((p, i) => (
-              <PointCard key={p} text={p} mine="human" side={side} index={i} accent="text-warm" />
-            ))}
-          </div>
+          </AudienceCard>
 
-          {/* 3D head */}
-          <div className="order-1 lg:order-2 lg:sticky lg:top-24">
-            <div className="aspect-square w-full">
-              <HumanRobotHead onSide={setSide} />
-            </div>
-            <p className="mt-2 hidden text-center text-sm text-ink-faint lg:block">
-              Hover a side — the head follows your cursor
-            </p>
-          </div>
-
-          {/* agent column */}
-          <div data-side="robot" data-active={side === 'robot'} className="order-3 flex flex-col gap-3">
-            <ColumnHeader
-              side={side}
-              mine="robot"
-              align="right"
-              tint="bg-accent-soft text-accent"
-              title="For agents"
-              blurb="Not an afterthought API — the entire simulator is a first-class tool surface for AI agents."
-              icon={
-                <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
-                  <rect x="5" y="7" width="14" height="11" rx="2.5" stroke="currentColor" strokeWidth="1.8" />
-                  <path d="M12 7V4M9 4h6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                  <circle cx="9.5" cy="12" r="1.3" fill="currentColor" />
-                  <circle cx="14.5" cy="12" r="1.3" fill="currentColor" />
-                  <path d="M9.5 15.5h5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                </svg>
-              }
-            />
-            {agentPoints.map((p, i) => (
-              <PointCard key={p} text={p} mine="robot" side={side} index={i} accent="text-accent" />
-            ))}
-            <div
-              className={`mt-1 flex flex-wrap gap-2 transition-all duration-500 lg:justify-end ${
-                side === 'human' ? 'opacity-40' : 'opacity-100'
-              }`}
-            >
+          <AudienceCard
+            tint="bg-accent-soft text-accent"
+            title="For agents"
+            blurb="Not an afterthought API — the entire simulator is a first-class tool surface for AI agents."
+            points={agentPoints}
+            accent="text-accent"
+            icon={
+              <svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" aria-hidden="true">
+                <rect x="5" y="7" width="14" height="11" rx="2.5" stroke="currentColor" strokeWidth="1.8" />
+                <path d="M12 7V4M9 4h6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                <circle cx="9.5" cy="12" r="1.3" fill="currentColor" />
+                <circle cx="14.5" cy="12" r="1.3" fill="currentColor" />
+                <path d="M9.5 15.5h5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+              </svg>
+            }
+          >
+            <div className="mt-1 flex flex-wrap gap-2">
               {capabilities.map((c) => (
                 <span
                   key={c.title}
@@ -244,7 +188,7 @@ export default function AudienceSection() {
                 </span>
               ))}
             </div>
-          </div>
+          </AudienceCard>
         </div>
       </Reveal>
     </section>

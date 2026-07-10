@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 const links = [
   { href: '#agents', label: 'For Agents' },
   { href: '#features', label: 'Features' },
-  { href: '#demos', label: 'Demos' },
   { href: '#how-it-works', label: 'How it works' },
 ]
 

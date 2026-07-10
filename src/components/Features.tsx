@@ -43,7 +43,7 @@ export default function Features() {
             A serious robotics studio under the hood
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-ink-soft">
-            Local-first, RoboDK-class, native C++ kinematics — no ROS stack required.
+            Runs on your machine, industrial-grade precision, ready in minutes — no complex setup.
           </p>
         </Reveal>
 
@@ -70,12 +70,12 @@ export default function Features() {
             </div>
           </Tile>
 
-          <Tile title="Real-time TRAC-IK" line="Drag the marker, the arm follows at 60 Hz." span="md:col-span-2" delay={80}>
+          <Tile title="Real-time motion" line="Drag the marker, the arm follows instantly." span="md:col-span-2" delay={80}>
             <div className="flex h-full flex-col items-center justify-center">
               <p className="font-display text-6xl font-bold tracking-tight text-accent">
                 200<span className="text-2xl text-ink-faint">/s</span>
               </p>
-              <p className="mt-1 text-xs font-medium tracking-wide text-ink-faint uppercase">native C++ IK solves</p>
+              <p className="mt-1 text-xs font-medium tracking-wide text-ink-faint uppercase">motion solves per robot</p>
             </div>
           </Tile>
 
@@ -149,7 +149,7 @@ export default function Features() {
             </div>
           </Tile>
 
-          <Tile title="Open to everything" line="gRPC, SDK, and portable .pg projects." span="md:col-span-2" delay={160}>
+          <Tile title="Open to everything" line="Connect your own tools, share portable projects." span="md:col-span-2" delay={160}>
             <div className="flex h-full flex-col justify-center gap-2 font-mono text-xs">
               <p className="rounded-lg bg-[#101532] px-3 py-2 text-slate-300">
                 <span className="text-indigo-300">client</span>.MoveToPose(<span className="text-emerald-400">"pick_A"</span>)

@@ -4,7 +4,6 @@ const columns = [
     links: [
       { label: 'For Agents', href: '#agents' },
       { label: 'Features', href: '#features' },
-      { label: 'Demos', href: '#demos' },
       { label: 'How it works', href: '#how-it-works' },
     ],
   },
@@ -12,7 +11,7 @@ const columns = [
     heading: 'For builders',
     links: [
       { label: 'Enhanced MCP', href: '#agents' },
-      { label: 'gRPC API', href: '#features' },
+      { label: 'API access', href: '#features' },
       { label: 'SDK', href: '#features' },
       { label: '.pg projects', href: '#features' },
     ],

@@ -1,4 +1,5 @@
 import Reveal from './Reveal'
+import ComingSoonButton from './ComingSoonButton'
 
 export default function FinalCta() {
   return (
@@ -22,12 +23,9 @@ export default function FinalCta() {
             agents, and for both at once.
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href="#top"
-              className="rounded-full bg-white px-8 py-3.5 text-base font-semibold text-accent shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl"
-            >
+            <ComingSoonButton className="rounded-full bg-white px-8 py-3.5 text-base font-semibold text-accent shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl">
               Download for Linux
-            </a>
+            </ComingSoonButton>
             <a
               href="#agents"
               className="rounded-full border border-white/40 px-8 py-3.5 text-base font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-white/10"
