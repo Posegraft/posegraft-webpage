@@ -1,5 +1,16 @@
 import Reveal from './Reveal'
-import { SPEC_ROWS, PLUGINS } from '../data/specs'
+import { SPEC_ROWS, PLUGINS, MANY_MORE } from '../data/specs'
+
+/** paints the trailing "And many more..." teaser accent blue when present */
+function SpecValue({ value }: { value: string }) {
+  if (!value.endsWith(MANY_MORE)) return value
+  return (
+    <>
+      {value.slice(0, -MANY_MORE.length)}
+      <span className="text-accent">{MANY_MORE}</span>
+    </>
+  )
+}
 
 /** The engineer's act: the studio on its own merits, then the datasheet. */
 export default function ForHumans() {
@@ -52,7 +63,9 @@ export default function ForHumans() {
                 className="grid gap-1 px-4 py-3.5 md:grid-cols-[180px_1fr_auto] md:items-baseline md:gap-6"
               >
                 <span className="text-sm font-semibold text-ink">{r.label}</span>
-                <span className="font-mono text-sm text-ink-soft">{r.value}</span>
+                <span className="font-mono text-sm text-ink-soft">
+                  <SpecValue value={r.value} />
+                </span>
                 {r.note && <span className="text-xs text-ink-faint md:text-right">{r.note}</span>}
               </div>
             ))}

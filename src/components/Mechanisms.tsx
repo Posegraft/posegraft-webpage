@@ -1,12 +1,11 @@
 import { useState } from 'react'
 import Reveal from './Reveal'
-import { BRANDS, CAD_FORMATS } from '../data/specs'
+import { BRANDS, CAD_FORMATS, EQUIPMENT, MANY_MORE } from '../data/specs'
 
+// the equipment rows live in src/data/specs.ts (EQUIPMENT) — edit them there
 const shipped = [
   { label: 'Robots', items: BRANDS.map((b) => b.name) },
-  { label: 'Gripper', items: ['Robotiq 2F-85'] },
-  { label: 'Conveyor', items: ['Generic Conveyor'] },
-  { label: 'Primitives', items: ['Box', 'Sphere', 'Cylinder', 'Asphalt', 'Assembly'] },
+  ...EQUIPMENT,
   { label: 'Imports', items: CAD_FORMATS },
 ]
 
@@ -41,7 +40,14 @@ export default function Mechanisms() {
           {shipped.map((g) => (
             <div key={g.label} className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
               <span className="w-24 shrink-0 text-sm font-semibold text-ink">{g.label}</span>
-              <span className="font-mono text-sm text-ink-soft">{g.items.join(' · ')}</span>
+              <span className="font-mono text-sm text-ink-soft">
+                {g.items.map((item, i) => (
+                  <span key={item}>
+                    {i > 0 && ' · '}
+                    <span className={item === MANY_MORE ? 'text-accent' : undefined}>{item}</span>
+                  </span>
+                ))}
+              </span>
             </div>
           ))}
         </div>
