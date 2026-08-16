@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 
 const links = [
-  { href: '#agents', label: 'For Agents' },
-  { href: '#features', label: 'Features' },
-  { href: '#how-it-works', label: 'How it works' },
+  { href: '#agents', label: 'For agents' },
+  { href: '#tools', label: 'Tools' },
+  { href: '#equipment', label: 'Equipment' },
+  { href: '#humans', label: 'For humans' },
 ]
 
 export default function Nav() {
@@ -18,12 +19,12 @@ export default function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/80 shadow-[0_1px_0_0_var(--color-line)] backdrop-blur-md' : 'bg-transparent'
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        scrolled ? 'border-b border-line bg-paper/90 backdrop-blur-md' : 'bg-transparent'
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-        <a href="#top" className="font-display text-xl tracking-tight text-ink">
+        <a href="#top" className="text-xl tracking-tight text-ink">
           <span className="font-normal">Pose</span>
           <span className="font-bold">Graft</span>
         </a>
@@ -42,9 +43,9 @@ export default function Nav() {
 
         <a
           href="#get-started"
-          className="rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-accent-deep hover:shadow-md"
+          className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-deep"
         >
-          Get Started
+          Get started
         </a>
       </nav>
     </header>

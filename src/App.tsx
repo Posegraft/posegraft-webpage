@@ -1,9 +1,11 @@
 import Nav from './components/Nav'
 import Hero from './components/Hero'
-import AudienceSection from './components/AudienceSection'
+import Lockout from './components/Lockout'
+import ToolIndex from './components/ToolIndex'
 import AgentSuperpowers from './components/AgentSuperpowers'
-import Features from './components/Features'
-import HowItWorks from './components/HowItWorks'
+import TwoOperators from './components/TwoOperators'
+import Mechanisms from './components/Mechanisms'
+import ForHumans from './components/ForHumans'
 import FinalCta from './components/FinalCta'
 import Footer from './components/Footer'
 
@@ -13,10 +15,12 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
-        <AudienceSection />
+        <Lockout />
+        <ToolIndex />
         <AgentSuperpowers />
-        <Features />
-        <HowItWorks />
+        <TwoOperators />
+        <Mechanisms />
+        <ForHumans />
         <FinalCta />
       </main>
       <Footer />

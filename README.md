@@ -13,14 +13,8 @@ npm run dev      # local preview at http://localhost:5173
 npm run build    # static output in dist/
 ```
 
-## 3D head asset
+## Hero screenshot
 
-The half-human/half-robot bust uses the Lee Perry-Smith head scan by
-[Infinite Realities](https://ir-ltd.net) (CC-BY, via the three.js examples),
-stored in `public/models/LeePerrySmith/`.
-
-## Demo videos
-
-The "See it move" section has three video slots. Drop ~10 second `.mp4` clips into
-`public/videos/` (see `public/videos/README.md` for the expected filenames). Missing
-videos automatically show a styled "coming soon" placeholder.
+The hero uses `public/studio.png`. The current capture shows a near-empty scene —
+replace it with a screenshot of a populated workcell when one exists (same filename,
+no code change needed).

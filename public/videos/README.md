@@ -1,10 +1,11 @@
 # Demo videos
 
-Drop your ~10 second demo clips here with these exact names and they will
-appear automatically in the "See it move" section:
+Mechanism Builder preset clips, shown in the equipment section's preset stage
+(`src/components/Mechanisms.tsx`). Exact filenames matter:
 
-- `scene-design.mp4` — scene design walkthrough
-- `agent-builds-program.mp4` — agent building a block program via MCP
-- `reach-analysis.mp4` — reach analysis walkthrough
+- `fixed.webm` — Fixed Base
+- `liner.webm` — Linear Slide
+- `Hinge.webm` — Hinge
+- `rotation.webm` — Turntable
 
-Until a file exists, the page shows a styled "coming soon" placeholder in its slot.
+Replace a file (same name) to update its clip; no code change needed.

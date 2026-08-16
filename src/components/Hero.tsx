@@ -1,74 +1,65 @@
-import HeroCanvas from './HeroCanvas'
 import Reveal from './Reveal'
 import ComingSoonButton from './ComingSoonButton'
+import { TOOL_COUNT } from '../data/tools'
 
-const stats = [
-  { value: '~200/s', label: 'real-time motion solves per robot' },
-  { value: '8+', label: 'industrial robots bundled' },
-  { value: '10+', label: 'CAD formats imported' },
-  { value: '100%', label: 'of features agent-callable' },
-]
+const handshake = ['Ready', 'IK Bridge', 'Online']
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-16">
-      <div className="blueprint-grid absolute inset-0" aria-hidden="true" />
-      <div className="absolute inset-0" aria-hidden="true">
-        <div className="absolute -top-40 left-1/2 h-[560px] w-[900px] -translate-x-1/2 animate-drift rounded-full bg-accent-soft blur-3xl" />
-        <div className="absolute top-40 -right-40 h-96 w-96 rounded-full bg-warm-soft blur-3xl" />
-      </div>
-      <HeroCanvas />
-
-      <div className="relative mx-auto max-w-6xl px-5 pt-24 pb-20 text-center md:pt-32 md:pb-28">
+    <section id="top" className="relative isolate overflow-hidden border-b border-line pt-16">
+      <div className="hero-grid pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
+      <div className="mx-auto max-w-6xl px-5 pt-20 pb-16 md:pt-28">
         <Reveal>
-          <span className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-white/70 px-4 py-1.5 text-sm font-medium text-accent shadow-sm backdrop-blur">
-            <span className="h-2 w-2 animate-pulse-dot rounded-full bg-warm" />
-            The first robot simulator built for AI agents
-          </span>
-        </Reveal>
-
-        <Reveal delay={100}>
-          <h1 className="font-display mx-auto mt-8 max-w-5xl text-5xl leading-[1.05] font-bold tracking-tight text-ink md:text-6xl lg:text-7xl">
-            Simulation built <span className="text-accent">for agents</span>.
-            <br />
-            Designed <span className="text-warm">for humans</span>.
+          <h1 className="max-w-3xl text-4xl leading-[1.08] font-bold tracking-tight text-ink md:text-6xl">
+            The simulator that hands your agent the keys.
           </h1>
-        </Reveal>
-
-        <Reveal delay={200}>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft md:text-xl">
-            Design your scene. Build robotic logic. Let agents do the rest. PoseGraft pairs a
-            human-optimized 3D workcell studio with an agent-native backend — every single
-            feature is something an AI agent can see and control.
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft">
+            PoseGraft is a robot simulation studio designed for humans — and built so an AI agent
+            can reach every part of it. Same scene, same tools, same undo history. Nobody is
+            bolted on.
           </p>
-        </Reveal>
-
-        <Reveal delay={300}>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <ComingSoonButton className="rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-accent/25 transition-all hover:-translate-y-0.5 hover:bg-accent-deep hover:shadow-xl hover:shadow-accent/30">
+          <p className="mt-5 font-mono text-sm text-ink-faint">
+            {TOOL_COUNT} tools · one scene · two operators
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <ComingSoonButton className="rounded-lg bg-accent px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-accent-deep">
               Download for Linux
             </ComingSoonButton>
-            {/* ponytail: no scheduling tool yet — mailto is the stand-in until one exists */}
+            {/* ponytail: no scheduling tool yet — calendly is the stand-in until one exists */}
             <a
-              href="mailto:hello@posegraft.com?subject=Book%20a%20demo"
-              className="rounded-full border border-line bg-white/80 px-8 py-3.5 text-base font-semibold text-ink backdrop-blur transition-all hover:-translate-y-0.5 hover:border-accent/40 hover:text-accent"
+              href="https://calendly.com/posegraft/30min"
+              className="rounded-lg border border-line bg-white px-6 py-3 text-base font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
             >
               Book a demo
             </a>
           </div>
         </Reveal>
 
-        <Reveal delay={400}>
-          <dl className="mx-auto mt-16 grid max-w-3xl grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4">
-            {stats.map((s) => (
-              <div key={s.label}>
-                <dt className="sr-only">{s.label}</dt>
-                <dd className="font-display text-3xl font-bold text-ink">{s.value}</dd>
-                <dd className="mt-1 text-sm text-ink-faint">{s.label}</dd>
-              </div>
-            ))}
-          </dl>
+        <Reveal delay={150} className="relative mt-14">
+          <img
+            src="/studio.png"
+            alt="PoseGraft studio — 3D workcell viewport beside the visual Flow Builder"
+            className="w-full rounded-xl border border-line"
+          />
+          {/* The status strip from the app's own corner, pulled out: this is the handshake. */}
+          <div className="absolute -bottom-5 left-5 flex items-center gap-3 rounded-lg border border-line bg-white px-4 py-2.5">
+            <span className="flex items-center gap-2.5">
+              {handshake.map((s) => (
+                <span key={s} className="flex items-center gap-1.5 text-xs font-medium text-ink">
+                  <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-live" />
+                  {s}
+                </span>
+              ))}
+            </span>
+            <span className="border-l border-line pl-3 font-mono text-xs text-ink-faint">
+              the agent handshake
+            </span>
+          </div>
         </Reveal>
+        <p className="mt-10 max-w-xl text-sm text-ink-faint">
+          When those three dots are green, the local services are up — and anything connected over
+          MCP can see and operate the same workcell you do.
+        </p>
       </div>
     </section>
   )
