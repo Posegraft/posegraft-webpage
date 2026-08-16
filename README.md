@@ -9,18 +9,19 @@ Stack: Vite + React + TypeScript + Tailwind CSS 4. No router, single page.
 
 ```bash
 npm install
-npm run dev      # local preview at http://localhost:5173
-npm run build    # static output in dist/
+npm run dev          # local preview at http://localhost:5173
+npm run build        # static output in dist/
+npm run check:theme  # WCAG AA contrast audit of both themes (dev server must be up)
 ```
 
-## 3D head asset
+## Theming
 
-The half-human/half-robot bust uses the Lee Perry-Smith head scan by
-[Infinite Realities](https://ir-ltd.net) (CC-BY, via the three.js examples),
-stored in `public/models/LeePerrySmith/`.
+Light/dark via the `html.dark` class — semantic tokens are remapped in
+`src/index.css`, toggled from the nav, defaulting to the OS preference and
+persisted in `localStorage` (`src/theme.ts`, boot script in `index.html`).
 
-## Demo videos
+## Hero screenshot
 
-The "See it move" section has three video slots. Drop ~10 second `.mp4` clips into
-`public/videos/` (see `public/videos/README.md` for the expected filenames). Missing
-videos automatically show a styled "coming soon" placeholder.
+The hero uses `public/studio.png`. The current capture shows a near-empty scene —
+replace it with a screenshot of a populated workcell when one exists (same filename,
+no code change needed).

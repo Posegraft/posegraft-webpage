@@ -19,7 +19,7 @@ export default function ComingSoonButton({ className, children }: { className: s
       <span
         role="status"
         aria-live="polite"
-        className={`pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-ink px-3.5 py-1.5 text-sm font-medium text-white shadow-lg transition-all duration-300 ${
+        className={`pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-ink px-3.5 py-1.5 text-sm font-medium text-paper shadow-lg transition-all duration-300 ${
           show ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-0'
         }`}
       >
