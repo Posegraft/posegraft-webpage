@@ -35,6 +35,12 @@
 
   --color-terminal: #10151f;
 
+  /* The page container, used by every section as max-w-page. Wide cap rather
+     than full bleed: keeps the ForHumans datasheet rows and the Mechanisms
+     two-column grid from stretching on 2k+ monitors. One knob for the whole
+     layout — 72rem is Tailwind's old 6xl, 100% is full bleed. */
+  --container-page: 96rem;
+
   /* 13px, not 12px: every mono caption and detail line on the page uses
      text-xs, and 12px was the readability complaint. */
   --text-xs: 0.8125rem;
@@ -91,14 +97,18 @@ html {
    Masked twice — dimmed (not cut out) behind the copy, and faded before the
    screenshot. The dim is centred so both margins read the same; an off-centre
    hole looks like half the grid failed to render. */
-.hero-grid {
-  /* line is now dark enough that a full-strength grid competes with the copy */
+.grid-bg {
+  /* line is dark enough that a full-strength grid competes with the copy.
+     Override --grid-line to reuse this on a coloured surface. */
   --grid-line: color-mix(in oklab, var(--color-line) 65%, var(--color-paper));
   background-image:
     linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
   background-size: 64px 64px;
   animation: grid-pan 30s linear infinite;
+}
+
+.hero-grid {
   mask-image:
     radial-gradient(80% 65% at 50% 26%, rgb(0 0 0 / 0.22) 0%, #000 85%),
     linear-gradient(#000 55%, transparent 92%);

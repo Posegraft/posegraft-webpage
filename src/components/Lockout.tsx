@@ -30,7 +30,7 @@ const here = [
 export default function Lockout() {
   return (
     <section id="agents" className="scroll-mt-16 bg-terminal py-24 text-white">
-      <div className="mx-auto max-w-6xl px-5">
+      <div className="mx-auto max-w-page px-5 md:px-8 lg:px-12">
         <Reveal>
           <h2 className="max-w-2xl text-3xl font-bold tracking-tight md:text-4xl">
             Agents have been locked out of every simulator.

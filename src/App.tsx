@@ -1,3 +1,4 @@
+import DotField from './components/DotField'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Lockout from './components/Lockout'
@@ -12,6 +13,7 @@ import Footer from './components/Footer'
 export default function App() {
   return (
     <>
+      <DotField />
       <Nav />
       <main>
         <Hero />

@@ -22,7 +22,10 @@ export default function Mechanisms() {
   const [preset, setPreset] = useState(presets[3])
 
   return (
-    <section id="equipment" className="mx-auto max-w-6xl scroll-mt-16 px-5 py-24">
+    <section
+      id="equipment"
+      className="mx-auto max-w-page scroll-mt-16 px-5 py-24 md:px-8 lg:px-12"
+    >
       <Reveal>
         <h2 className="max-w-2xl text-3xl font-bold tracking-tight text-ink md:text-4xl">
           Automation equipment, not just robot arms.

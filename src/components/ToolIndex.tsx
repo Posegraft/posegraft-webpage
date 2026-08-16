@@ -17,13 +17,14 @@ export default function ToolIndex() {
 
   return (
     <section id="tools" className="scroll-mt-16 border-b border-line bg-mist/50 py-24">
-      <div className="mx-auto max-w-6xl px-5">
+      <div className="mx-auto max-w-page px-5 md:px-8 lg:px-12">
         <Reveal>
           <h2 className="max-w-2xl text-3xl font-bold tracking-tight text-ink md:text-4xl">
             Full access, itemised.
           </h2>
           <p className="mt-4 max-w-2xl text-lg text-ink-soft">
-            {TOOL_COUNT} MCP tools, named exactly as the server exposes them. If you can do it in
+            <span className="font-semibold text-accent">{TOOL_COUNT}</span> MCP tools, named exactly
+            as the server exposes them. If you can do it in
             the studio’s core loop — scene, assets, mechanisms, motion, programs, measurement — an
             agent can call it.
           </p>
@@ -64,7 +65,13 @@ export default function ToolIndex() {
             onClick={() => setExpanded((e) => !e)}
             className="mt-6 rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
           >
-            {expanded ? 'Collapse the list' : `Show all ${TOOL_COUNT} tools`}
+            {expanded ? (
+              'Collapse the list'
+            ) : (
+              <>
+                Show all <span className="text-accent">{TOOL_COUNT}</span> tools
+              </>
+            )}
           </button>
 
           <p className="mt-8 font-mono text-sm text-ink-faint">

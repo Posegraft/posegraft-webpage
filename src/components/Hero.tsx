@@ -7,10 +7,15 @@ const handshake = ['Ready', 'IK Bridge', 'Online']
 export default function Hero() {
   return (
     <section id="top" className="relative isolate overflow-hidden border-b border-line pt-16">
-      <div className="hero-grid pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
-      <div className="mx-auto max-w-6xl px-5 pt-20 pb-16 md:pt-28">
-        <Reveal>
-          <h1 className="max-w-3xl text-4xl leading-[1.08] font-bold tracking-tight text-ink md:text-6xl">
+      <div className="grid-bg hero-grid pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
+      <div className="mx-auto max-w-page px-5 pt-20 pb-16 md:px-8 md:pt-28 lg:px-12">
+        {/* min-h, not font size, is what puts the screenshot below the fold —
+            type big enough to do it alone would be absurd on a short laptop.
+            11rem = nav (4) + this container's md:pt-28 (7). */}
+        <Reveal className="flex min-h-[calc(100svh-11rem)] flex-col justify-center">
+          {/* fluid so it scales with the wide container instead of stepping at
+              one breakpoint: ~48px on phones, up to 136px on a 2k monitor */}
+          <h1 className="max-w-5xl text-[clamp(3rem,8vw,8.5rem)] leading-[1.02] font-bold tracking-tight text-ink">
             The simulator that hands your agent the keys.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft">

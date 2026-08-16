@@ -68,15 +68,7 @@ export type Plugin = { name: string; line: string }
 export const PLUGINS: Plugin[] = [
   {
     name: 'Reach analysis',
-    line: 'Workspace heat maps — know what the arm can reach before anything is bolted down.',
-  },
-  {
-    name: 'Palletization',
-    line: 'Pattern wizard — layers, interlocks, and repeatable pattern moves from a few inputs.',
-  },
-  {
-    name: 'Welding',
-    line: 'Seam path programming with approach vectors and torch angles.',
+    line: 'know what the arm can reach before anything is bolted down.',
   },
   {
     name: 'Collision checking',

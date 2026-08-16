@@ -5,7 +5,7 @@ import { SPEC_ROWS, PLUGINS } from '../data/specs'
 export default function ForHumans() {
   return (
     <section id="humans" className="scroll-mt-16 border-t border-line bg-mist/40 py-24">
-      <div className="mx-auto max-w-6xl px-5">
+      <div className="mx-auto max-w-page px-5 md:px-8 lg:px-12">
         {/* beat 1 — the studio */}
         <div className="grid items-start gap-12 lg:grid-cols-2">
           <Reveal>

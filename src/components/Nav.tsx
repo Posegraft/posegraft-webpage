@@ -23,7 +23,7 @@ export default function Nav() {
         scrolled ? 'border-b border-line bg-paper/90 backdrop-blur-md' : 'bg-transparent'
       }`}
     >
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
+      <nav className="mx-auto flex h-16 max-w-page items-center justify-between px-5 md:px-8 lg:px-12">
         <a href="#top" className="text-xl tracking-tight text-ink">
           <span className="font-normal">Pose</span>
           <span className="font-bold">Graft</span>
