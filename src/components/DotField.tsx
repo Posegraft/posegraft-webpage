@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useTheme } from '../theme'
 
 const LINK_PX = 150
 const MAX_DOTS = 70
@@ -10,6 +11,13 @@ function dotCount(w: number, h: number) {
 }
 
 type Dot = { x: number; y: number; vx: number; vy: number }
+
+/* canvas can't read Tailwind tokens, so the palette lives here: the dark
+   stroke (#3f4756) is invisible on a dark page and vice versa */
+const PALETTE = {
+  light: { fill: '#2b63e0', stroke: '#3f4756' },
+  dark: { fill: '#7ea6ff', stroke: '#4a5568' },
+} as const
 
 /**
  * Page-wide backdrop: slowly drifting dots that draw a line to any neighbour
@@ -23,6 +31,17 @@ type Dot = { x: number; y: number; vx: number; vy: number }
 export default function DotField() {
   const ref = useRef<HTMLCanvasElement>(null)
   const [pastHero, setPastHero] = useState(false)
+  const theme = useTheme()
+
+  // refs, not effect deps: recolors on toggle without reseeding (dots would jump)
+  const colors = useRef(PALETTE[theme])
+  const redraw = useRef<() => void>(() => {})
+  useEffect(() => {
+    colors.current = PALETTE[theme]
+    // the rAF loop picks colors up next frame, but under prefers-reduced-motion
+    // there is no loop — repaint the single still frame explicitly
+    redraw.current()
+  }, [theme])
 
   // full strength over the hero, pulled back once the content sections start
   useEffect(() => {
@@ -61,8 +80,8 @@ export default function DotField() {
     const draw = () => {
       ctx.clearRect(0, 0, w, h)
       ctx.globalAlpha = 1
-      ctx.fillStyle = '#2b63e0'
-      ctx.strokeStyle = '#3f4756'
+      ctx.fillStyle = colors.current.fill
+      ctx.strokeStyle = colors.current.stroke
       ctx.lineWidth = 1
 
       for (const d of dots) {
@@ -109,6 +128,7 @@ export default function DotField() {
       draw()
     }
 
+    redraw.current = draw
     seed()
     draw()
     start()

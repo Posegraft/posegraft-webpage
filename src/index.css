@@ -4,6 +4,9 @@
 @import '@fontsource/inter/700.css';
 @import 'tailwindcss';
 
+/* class-based dark mode: html.dark, toggled by src/theme.ts */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-mono:
@@ -20,11 +23,19 @@
   /* Page is a grey off-white, not near-white — cards stay pure white, which
      is what gives the layout its depth. mist/line step down from there. */
   --color-paper: #f0f2f5;
+  /* card = every raised surface that was literal bg-white; themeable in dark */
+  --color-card: #ffffff;
   --color-steel: #c3cad3;
   --color-mist: #e4e8ee;
   --color-line: #d4dae2;
 
-  --color-accent: #2b63e0;
+  /* text/border blue — a hair darker than accent-surface so it clears AA 4.5
+     on the mist-tinted section bands, not just on white */
+  --color-accent: #2a5fd8;
+  /* the blue that carries white text (buttons, CTA block). Split from accent
+     because no single blue is both a 4.5:1 backdrop for white text and 4.5:1
+     text on a dark page — accent-surface stays fixed, accent brightens in dark. */
+  --color-accent-surface: #2b63e0;
   --color-accent-deep: #1e4dbd;
   --color-accent-soft: #e5ecfb;
   --color-live: #17864a;
@@ -91,6 +102,37 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Dark theme: remap the semantic tokens; components stay untouched.
+   html.dark (0,1,1) so it always beats Tailwind's :root theme output.
+   Every text value clears WCAG AA 4.5:1 on the surface it actually sits on
+   — ratios verified by scripts/theme-check.mjs. */
+html.dark {
+  color-scheme: dark;
+  --color-paper: #0d1117; /* page */
+  --color-card: #161c26; /* raised */
+  /* terminal inverts role: light mode's darkest band becomes a lifted panel
+     above paper/card, so the Lockout band still reads as a band */
+  --color-terminal: #1d2531;
+  --color-mist: #171e29;
+  --color-line: #2a323f;
+  --color-steel: #39424f;
+  --color-ink: #e9edf3; /* 15:1 on page */
+  --color-ink-soft: #a8b2c1; /* 8.5:1 page, 7.5:1 card */
+  --color-ink-faint: #8b95a5; /* 6.1:1 page — still AA at 13px */
+  --color-accent: #7ea6ff; /* 8.1:1 page, 5.9:1 on accent-soft */
+  --color-accent-deep: #1e4dbd;
+  --color-accent-soft: #1b2c52;
+  --color-live: #3ecf7e; /* = live-lit; fixes text-live on dark cards */
+  --color-live-soft: #10301f;
+  --color-alert: #ff7a7a; /* 7:1 on page */
+}
+
+/* the light-mode color-mix (line 65%, paper) collapses to near-invisible at
+   dark values — the hero grid needs the undiluted line color */
+html.dark .grid-bg {
+  --grid-line: var(--color-line);
 }
 
 /* Hero backdrop: the app's own viewport grid, panning one cell per cycle.

@@ -76,8 +76,8 @@ export default function Mechanisms() {
                   onClick={() => setPreset(p)}
                   className={`rounded-lg border px-4 py-2 text-sm font-semibold transition-colors ${
                     p.id === preset.id
-                      ? 'border-accent bg-accent text-white'
-                      : 'border-line bg-white text-ink-soft hover:border-accent/40 hover:text-accent'
+                      ? 'border-accent-surface bg-accent-surface text-white'
+                      : 'border-line bg-card text-ink-soft hover:border-accent/40 hover:text-accent'
                   }`}
                 >
                   {p.label}
@@ -96,7 +96,7 @@ export default function Mechanisms() {
               muted
               playsInline
               preload="metadata"
-              className="aspect-video w-full rounded-lg border border-line bg-steel/30 object-cover"
+              className="aspect-video w-full rounded-lg border border-line bg-steel/30 object-cover dark:brightness-90"
             />
             <div className="mt-4 border-t border-line pt-4 text-center font-mono text-xs text-ink-soft">
               posegraft_mechanism_create{' '}

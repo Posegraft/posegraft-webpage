@@ -335,7 +335,7 @@ export default function AgentSuperpowers() {
                   aria-controls="superpowers-demo"
                   onClick={() => setActive(i)}
                   onMouseEnter={() => setActive(i)}
-                  className={`w-full rounded-xl border bg-white p-4 text-left transition-colors duration-300 ${
+                  className={`w-full rounded-xl border bg-card p-4 text-left transition-colors duration-300 ${
                     open ? 'border-accent/50' : 'border-line hover:border-accent/25'
                   }`}
                 >
@@ -363,7 +363,7 @@ export default function AgentSuperpowers() {
           </div>
 
           {/* demo panel — remounts on `active` change so each animation replays */}
-          <div id="superpowers-demo" role="tabpanel" className="flex h-full flex-col rounded-xl border border-line bg-white p-5 md:p-8">
+          <div id="superpowers-demo" role="tabpanel" className="flex h-full flex-col rounded-xl border border-line bg-card p-5 md:p-8">
             <div key={active} className="flex min-h-72 flex-1 flex-col justify-center">
               {beats[active].render()}
             </div>

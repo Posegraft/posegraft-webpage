@@ -27,13 +27,13 @@ export default function Hero() {
             {TOOL_COUNT} tools · one scene · two operators
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <ComingSoonButton className="rounded-lg bg-accent px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-accent-deep">
+            <ComingSoonButton className="rounded-lg bg-accent-surface px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-accent-deep">
               Download for Linux
             </ComingSoonButton>
             {/* ponytail: no scheduling tool yet — calendly is the stand-in until one exists */}
             <a
               href="https://calendly.com/posegraft/30min"
-              className="rounded-lg border border-line bg-white px-6 py-3 text-base font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
+              className="rounded-lg border border-line bg-card px-6 py-3 text-base font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
             >
               Book a demo
             </a>
@@ -44,10 +44,10 @@ export default function Hero() {
           <img
             src="/studio.png"
             alt="PoseGraft studio — 3D workcell viewport beside the visual Flow Builder"
-            className="w-full rounded-xl border border-line"
+            className="w-full rounded-xl border border-line dark:brightness-90"
           />
           {/* The status strip from the app's own corner, pulled out: this is the handshake. */}
-          <div className="absolute -bottom-5 left-5 flex items-center gap-3 rounded-lg border border-line bg-white px-4 py-2.5">
+          <div className="absolute -bottom-5 left-5 flex items-center gap-3 rounded-lg border border-line bg-card px-4 py-2.5">
             <span className="flex items-center gap-2.5">
               {handshake.map((s) => (
                 <span key={s} className="flex items-center gap-1.5 text-xs font-medium text-ink">

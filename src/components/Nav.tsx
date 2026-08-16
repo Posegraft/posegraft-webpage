@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useTheme, setTheme } from '../theme'
 
 const links = [
   { href: '#agents', label: 'For agents' },
@@ -9,6 +10,7 @@ const links = [
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
+  const theme = useTheme()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -41,12 +43,32 @@ export default function Nav() {
           ))}
         </div>
 
-        <a
-          href="#get-started"
-          className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-deep"
-        >
-          Get started
-        </a>
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            className="flex h-9 w-9 items-center justify-center rounded-lg text-ink-soft transition-colors hover:bg-mist hover:text-ink"
+          >
+            {theme === 'dark' ? (
+              <svg viewBox="0 0 24 24" className="h-4.5 w-4.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" className="h-4.5 w-4.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z" />
+              </svg>
+            )}
+          </button>
+          <a
+            href="#get-started"
+            className="rounded-lg bg-accent-surface px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-deep"
+          >
+            Get started
+          </a>
+        </div>
       </nav>
     </header>
   )

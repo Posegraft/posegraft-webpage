@@ -69,7 +69,7 @@ export default function TwoOperators() {
 
         <Reveal delay={150}>
           {/* revision readout */}
-          <div className="mx-auto mt-12 flex w-fit items-baseline gap-3 rounded-lg border border-line bg-white px-5 py-3">
+          <div className="mx-auto mt-12 flex w-fit items-baseline gap-3 rounded-lg border border-line bg-card px-5 py-3">
             <span className="font-mono text-xs text-ink-faint">scene revision</span>
             <span className="font-mono text-3xl font-bold text-accent tabular-nums">{rev}</span>
           </div>
@@ -89,7 +89,7 @@ export default function TwoOperators() {
                 const visible = i < shown
                 const card = (
                   <div
-                    className={`inline-block max-w-md rounded-lg border bg-white px-4 py-3 text-left ${
+                    className={`inline-block max-w-md rounded-lg border bg-card px-4 py-3 text-left ${
                       e.conflict ? 'border-alert/40' : 'border-line'
                     }`}
                   >

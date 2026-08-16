@@ -33,7 +33,7 @@ export default function ForHumans() {
                 playsInline
                 preload="metadata"
                 aria-label="Snapping program blocks together in Flow Builder and pressing Play"
-                className="aspect-video w-full rounded-lg border border-line bg-steel/30 object-cover"
+                className="aspect-video w-full rounded-lg border border-line bg-steel/30 object-cover dark:brightness-90"
               />
               <div className="mt-4 border-t border-line pt-4 text-center font-mono text-xs text-ink-soft">
                 design → program → run · all on your machine
@@ -45,7 +45,7 @@ export default function ForHumans() {
         {/* beat 2 — the spec ledger */}
         <Reveal delay={100} className="mt-16">
           <p className="font-mono text-xs tracking-widest text-ink-faint uppercase">Datasheet</p>
-          <div className="mt-4 divide-y divide-line border-y border-line bg-white/60">
+          <div className="mt-4 divide-y divide-line border-y border-line bg-card/60">
             {SPEC_ROWS.map((r) => (
               <div
                 key={r.label}

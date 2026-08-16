@@ -63,7 +63,7 @@ export default function ToolIndex() {
             type="button"
             aria-expanded={expanded}
             onClick={() => setExpanded((e) => !e)}
-            className="mt-6 rounded-lg border border-line bg-white px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
+            className="mt-6 rounded-lg border border-line bg-card px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
           >
             {expanded ? (
               'Collapse the list'
