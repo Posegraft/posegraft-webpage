@@ -11,6 +11,9 @@ export type Brand = {
   bundled: boolean
 }
 
+/** trailing teaser item — render sites match on this to paint it accent blue */
+export const MANY_MORE = 'And many more...'
+
 export const BRANDS: Brand[] = [
   { name: 'Fairino', bundled: true },
   { name: 'ABB', bundled: false },
@@ -19,9 +22,66 @@ export const BRANDS: Brand[] = [
   { name: 'Yaskawa', bundled: false },
   { name: 'KUKA', bundled: false },
   { name: 'Dobot', bundled: false },
+  { name: MANY_MORE, bundled: false },
 ]
 
 export const CAD_FORMATS = ['STEP', 'STL', 'URDF', 'SDF', 'OBJ', 'glTF', 'DAE', 'WRL', 'IGES']
+
+/**
+ * Equipment library shown in the #equipment section (Mechanisms.tsx).
+ * EDIT HERE to add/remove items. Mirrors roboviewer's "Add to Scene" catalog:
+ *   grippers   → roboviewer/src/constants/robots.ts (AVAILABLE_GRIPPERS + PARAMETRIC_GRIPPERS)
+ *   conveyors  → roboviewer/src/components/SceneTree.tsx (CONVEYOR_LIBRARY_ITEMS + static types)
+ *   factory    → roboviewer/src/utils/factoryObjects.ts (FACTORY_OBJECT_DEFS)
+ *   scene      → roboviewer/src/components/SceneTree.tsx (Scene tab)
+ *   stations   → roboviewer/src/utils/stations/stationCatalog.ts (STATION_TEMPLATES)
+ */
+export const EQUIPMENT: { label: string; items: string[] }[] = [
+  {
+    label: 'Grippers',
+    items: [
+      'Parallel Gripper',
+      'Vacuum Gripper',
+      'Layer Gripper',
+      'Welding Gun',
+      MANY_MORE,
+    ],
+  },
+  {
+    label: 'Conveyors',
+    items: [
+      'Roller Conveyor',
+      'Curved Conveyor',
+      'Spiral Conveyor',
+      'Telescopic Conveyor',
+      'Incline Belt Conveyor',
+      'Vertical Lift',
+      'Bucket Elevator',
+      MANY_MORE,
+    ],
+  },
+  {
+    label: 'Factory',
+    items: [
+      'Pallet',
+      'Rack',
+      'Bin',
+      'Machine',
+      'Fixture',
+      'Vibro Sifter',
+      'Welding Table',
+      'Welding Curtain',
+      'Fence Gate',
+      'Part Tray',
+      MANY_MORE,
+
+    ],
+  },
+  {
+    label: 'Scene items',
+    items: ['Assembly', 'Warehouse', 'Box Object', 'Pedestal', 'Table', MANY_MORE],
+  },
+]
 
 export type SpecRow = { label: string; value: string; note?: string }
 
